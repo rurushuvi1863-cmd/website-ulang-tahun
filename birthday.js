@@ -1,16 +1,16 @@
-// Birthday page scripts
+// 生日页面脚本
 
-// Animation GSAP timeline on load event
+// 页面加载时的动画与提示
 window.addEventListener("load", () => {
     Swal.fire({
-        title: "Do you want to play music in the background?",
-        // text: "You won't be able to revert this!",
+        title: "要不要播放背景音乐？",
+        // text: "你之后将无法更改！",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
+        confirmButtonText: "要",
+        cancelButtonText: "不要",
     }).then((result) => {
         if (result.isConfirmed) {
             document.querySelector(".song").play();
@@ -22,7 +22,7 @@ window.addEventListener("load", () => {
 });
 
 const animationTimeline = () => {
-    // split chars that needs  to be animted individually
+    // 将文字拆分成单个字符以便逐个动画
     const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
     const hbd = document.getElementsByClassName("wish-hbd")[0];
 
@@ -48,7 +48,7 @@ const animationTimeline = () => {
         skewY: "-15deg",
     };
 
-    // animation timeline
+    // 动画时间线
     const tl = new TimelineMax();
 
     tl.to(".container", 0.6, {
@@ -232,7 +232,6 @@ const animationTimeline = () => {
             {
                 opacity: 0,
                 y: -50,
-                // scale: 0.3,
                 rotation: 150,
                 skewX: "30deg",
                 ease: Elastic.easeOut.config(1, 0.5),
@@ -292,10 +291,9 @@ const animationTimeline = () => {
             "+=1"
         );
 
-    // restart animation on click
+    // 点击重新播放动画
     const replyBtn = document.getElementById("replay");
     replyBtn.addEventListener("click", () => {
         tl.restart();
     });
 };
-
